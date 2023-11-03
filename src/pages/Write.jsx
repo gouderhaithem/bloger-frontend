@@ -23,7 +23,10 @@ const Write = () => {
       setLoading(true);
       const data = new FormData();
       data.append("my_file", file);
-      const res = await axios.post("http://localhost:8000/api/upload", data);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/upload`,
+        data
+      );
       setRes(res.data);
       return res.data.secure_url;
     } catch (error) {
