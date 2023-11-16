@@ -19,6 +19,7 @@ import avatar9 from "../img/avatar/avatar9.png";
 const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
+
   const { currentUser } = useContext(AuthContext);
   const avatarImages = [
     avatar1,
@@ -134,7 +135,7 @@ const Comments = ({ postId }) => {
             <div className="user">
               <img alt="avatar" src={getRandomAvatar()} />
               <div className="info">
-                <span>{singlecomment.username}</span>
+                <span id="logo">{singlecomment.username}</span>
                 <p>Posted {moment(singlecomment.date).fromNow()}</p>
               </div>
             </div>

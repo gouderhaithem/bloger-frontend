@@ -14,9 +14,30 @@ import Single from "./pages/Single";
 import Write from "./pages/Write";
 import "./style.scss";
 import Upload from "./pages/Upload";
+import { useEffect, useState } from "react";
 
 function App() {
   const location = useLocation();
+  const [darkMode, SetDarkMode] = useState(false);
+  //use effect for dark mode
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("bg-salmon");
+    } else {
+      document.body.classList.remove("bg-salmon");
+    }
+
+    // 👇️ checking if the body element contains a class
+    if (document.body.classList.contains("bg-salmon")) {
+      console.log("body tag contains class");
+    }
+  }, [darkMode]);
+
+  //dark mode handler
+  const darkModeHandler = () => {
+    SetDarkMode(!darkMode);
+    console.log(darkMode);
+  };
   return (
     <div className="app">
       <div className="container">
@@ -29,7 +50,8 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/upload" element={<Upload />} />
         </Routes>
-        <Footer />
+
+        <Footer darkModeHandler={darkModeHandler} darkMode={darkMode} />
       </div>
     </div>
   );

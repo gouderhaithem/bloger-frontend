@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [errMsg, setErrMsg] = useState("");
   const cat = useLocation().search;
 
   useEffect(() => {
@@ -16,11 +17,12 @@ const Home = () => {
         );
         setPosts(res.data);
       } catch (err) {
-        console.log(err.response.data);
+        console.log(err.code);
+        setErrMsg(err.code);
       }
     };
     fetchData();
-  }, [cat]);
+  }, [cat, errMsg]);
 
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -52,7 +54,14 @@ const Home = () => {
             initial="hidden"
             animate="show"
           >
-            There is no data at the moment.
+            {errMsg === "ERR_NETWORK" ? (
+              <h4>
+                There is no data at the moment. Please check your internet
+                connection.
+              </h4>
+            ) : (
+              <h4>There is no data at the moment.</h4>
+            )}
           </motion.div>
         </div>
       ) : (

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../img/logo1.png";
+import Logo from "../img/logo1_2.png";
 import list from "../img/list.png";
 import { AuthContext } from "../context/authContext";
 import { toast } from "react-hot-toast";
@@ -52,7 +52,7 @@ const NavBar = () => {
             <span onClick={logout}>Logout</span>
           ) : (
             <Link className="link" to="/login">
-              <span>Login</span>
+              <span id="login">Login</span>
             </Link>
           )}
           <span className="write">
