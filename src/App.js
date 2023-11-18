@@ -36,7 +36,6 @@ function App() {
   //dark mode handler
   const darkModeHandler = () => {
     SetDarkMode(!darkMode);
-    console.log(darkMode);
   };
   return (
     <div className="app">

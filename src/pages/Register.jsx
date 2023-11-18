@@ -32,15 +32,23 @@ const Register = () => {
       <form>
         <input
           type="text"
+          placeholder="username"
           name="username"
           id="username"
           onChange={handleChange}
         />
 
-        <input type="email" name="email" id="" onChange={handleChange} />
+        <input
+          type="email"
+          name="email"
+          placeholder="email"
+          id=""
+          onChange={handleChange}
+        />
         <input
           type="password"
           name="password"
+          placeholder="password"
           id="password"
           onChange={handleChange}
         />
